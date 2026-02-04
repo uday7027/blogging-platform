@@ -99,13 +99,19 @@ export const updatePost = async (req, res) => {
 export const deletePost = async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+
     if (!post) {
       return res.status(404).json({
-        message: "not found",
+        message: "Post not found",
       });
     }
 
-    if (post.author.toString() !== req.user._id.toString()) {
+    const isAuthor =
+      post.author.toString() === req.user._id.toString();
+
+    const isAdmin = req.user.role === "admin";
+
+    if (!isAuthor && !isAdmin) {
       return res.status(403).json({
         message: "Not authorized to delete this post",
       });
@@ -114,12 +120,54 @@ export const deletePost = async (req, res) => {
     await post.deleteOne();
 
     return res.status(200).json({
-        message: "post deleted successfully",
-    })
-
+      message: "Post deleted successfully",
+    });
   } catch (error) {
+    console.error(error);
     return res.status(400).json({
       message: "Invalid post ID",
     });
   }
 };
+
+
+export const toggleLikePost = async (req, res) => {
+  try {
+    const post = await Post.findById(req.params.id);
+
+    if (!post) {
+      return res.status(404).json({
+        message: "Post not found",
+      });
+    }
+
+    const userId = req.user._id.toString();
+
+    const isLiked = post.likes.some(
+      (id) => id.toString() === userId
+    );
+
+    if (isLiked) {
+      // UNLIKE
+      post.likes = post.likes.filter(
+        (id) => id.toString() !== userId
+      );
+    } else {
+      // LIKE
+      post.likes.push(req.user._id);
+    }
+
+    await post.save();
+
+    return res.status(200).json({
+      message: isLiked ? "Post unliked" : "Post liked",
+      likesCount: post.likes.length,
+    });
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({
+      message: "Invalid post ID",
+    });
+  }
+};
+
