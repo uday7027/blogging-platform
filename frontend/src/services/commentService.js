@@ -1,7 +1,7 @@
 import api from "./api.js";
 
 export const getCommentsByPost = (postId) => {
-  return api.get(`/comments/${id}`);
+  return api.get(`/comments/${postId}`);
 };
 
 export const addComment = (postId, data) => {
