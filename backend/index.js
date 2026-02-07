@@ -18,7 +18,7 @@ connectDB();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://blogging-platform-gold.vercel.app/",
   }),
 );
 app.use("/api/auth", authRoutes);
