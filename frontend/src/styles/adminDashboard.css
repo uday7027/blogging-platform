@@ -1,0 +1,102 @@
+.admin-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Tabs */
+.admin-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin-tabs button {
+  padding: 0.4rem 1rem;
+  border: none;
+  background: #e5e7eb;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.admin-tabs button.active {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* Search */
+.admin-search {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  max-width: 300px;
+}
+
+/* Stats */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  background: #111827;
+  color: #ffffff;
+  padding: 1.2rem;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-card h4 {
+  margin-bottom: 0.3rem;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+table th,
+table td {
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem;
+}
+
+table th {
+  background: #f3f4f6;
+}
+
+table button {
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Role badge */
+.role {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.role.admin {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.role.user {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+/* Empty */
+.empty {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
