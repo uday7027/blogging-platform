@@ -5,7 +5,7 @@ import Comments from "../components/Comments";
 import LikeButton from "../components/LikeButton";
 import { useAuth } from "../context/AuthContext";
 
-import "../styles/singlePost.css";
+import "../styles/singlepost.css";
 
 const SinglePost = () => {
   const { id } = useParams();
