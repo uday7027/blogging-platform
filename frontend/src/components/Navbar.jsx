@@ -30,8 +30,11 @@ const Navbar = () => {
               <Link to="/admin" className="nav-link">
                 Admin
               </Link>
+              
             )}
-
+            <Link to="/create" className="nav-link">
+              Create Post
+            </Link>
             <button onClick={logout} className="logout-btn">
               Logout
             </button>
