@@ -1,6 +1,6 @@
 import { toggleLike } from "../services/postService";
 import { useAuth } from "../context/AuthContext";
-import "../styles/likeButton.css";
+import "../styles/likebutton.css";
 
 const LikeButton = ({ postId, likes, setLikes }) => {
   const { user } = useAuth();
